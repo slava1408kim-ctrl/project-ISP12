@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: linear-gradient(145deg, #e0f2e9 0%, #c8e6df 100%);
+    color: #1e3a2f;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ШАПКА */
+.header {
+    background: #1e3a2f;
+    color: white;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.logo h1 {
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.logo p {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+.nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.nav-btn {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 40px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 1rem;
+}
+.nav-btn i {
+    margin-right: 0.5rem;
+}
+.nav-btn.active {
+    background: #3aad7a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.nav-btn:hover {
+    background: #2b7a4b;
+}
+
+/* ОСНОВНОЙ КОНТЕНТ */
+.main {
+    flex: 1;
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    width: 100%;
+}
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+.page.active-page {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Карточка калькулятора */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 2rem;
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+}
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+}
+.input-panel {
+    flex: 1.2;
+    min-width: 280px;
+    background: #f9fffcf0;
+    padding: 1.5rem;
+    border-radius: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.results-panel {
+    flex: 2;
+    min-width: 300px;
+}
+label {
+    font-weight: 600;
+    display: block;
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+    border: 2px solid #cfe6dd;
+    border-radius: 2rem;
+    background: white;
+}
+.mode-selector {
+    background: #e2f0ea;
+    padding: 0.8rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+.mode-btn {
+    flex: 1;
+    background: white;
+    border: 2px solid #cfe6dd;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.2s;
+}
+.mode-btn.active {
+    background: #2b7a4b;
+    color: white;
+    border-color: #2b7a4b;
+}
+.disabled-input {
+    background-color: #eef3f0;
+    color: #5f7c6e;
+    cursor: not-allowed;
+}
+.stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1a5d3e;
+}
+.grid-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.grid-stats > div {
+    flex: 1;
+    background: #f4faf7;
+    border-radius: 1.2rem;
+    padding: 0.8rem;
+    text-align: center;
+}
+.comp-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.7rem;
+    flex-wrap: wrap;
+}
+.comp-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+}
+.comp-label {
+    width: 140px;
+    font-weight: 500;
+}
+.comp-bar-bg {
+    flex: 1;
+    height: 28px;
+    background: #e2e9e5;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.comp-bar {
+    height: 100%;
+    width: 0%;
+    border-radius: 30px;
+    color: white;
+    line-height: 28px;
+    padding-left: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: width 0.2s;
+}
+.tip-box {
+    margin-top: 1.5rem;
+    background: #e6f4ed;
+    border-radius: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-left: 8px solid #2b7a4b;
+}
+button {
+    background: #2b7a4b;
+    border: none;
+    color: white;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* Стили для страниц "О проекте" и "Советы" */
+.info-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.info-card h3 {
+    margin-bottom: 0.8rem;
+    color: #1e3a2f;
+}
+.advice-list {
+    list-style: none;
+}
+.advice-list li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+.advice-list li i {
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    color: #2b7a4b;
+}
+
+/* ПОДВАЛ */
+.footer {
+    background: #1e3a2f;
+    color: #c8e6df;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+}
+.footer a {
+    color: #a3d0bd;
+    text-decoration: none;
+}
+
+@media (max-width: 780px) {
+    .header-container { flex-direction: column; text-align: center; }
+    .comp-label { width: 110px; }
+}

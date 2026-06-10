@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Мусорный калькулятор | Исследовательский проект</title>
+    
+    <!-- Подключаем внешний CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome (CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-container">
+        <div class="logo">
+            <h1><i class="fas fa-trash-alt"></i> Мусорный калькулятор</h1>
+            <p>Исследовательский проект: сколько мусора мы выкидываем за неделю</p>
+        </div>
+        <div class="nav">
+            <button class="nav-btn active" data-page="calc"><i class="fas fa-calculator"></i> Калькулятор</button>
+            <button class="nav-btn" data-page="about"><i class="fas fa-info-circle"></i> О проекте</button>
+            <button class="nav-btn" data-page="tips"><i class="fas fa-leaf"></i> Советы</button>
+        </div>
+    </div>
+</header>
+
+<main class="main">
+    <!-- Страница калькулятора -->
+    <div id="calc-page" class="page active-page">
+        <div class="card">
+            <div class="flex-row">
+                <div class="input-panel">
+                    <div class="mode-selector">
+                        <div id="modeResearch" class="mode-btn active">📊 Данные исследования</div>
+                        <div id="modeManual" class="mode-btn">✏️ Ручной ввод</div>
+                    </div>
+                    <label><i class="fas fa-users"></i> Количество человек в семье</label>
+                    <input type="number" id="familyCount" value="4" min="1" max="20" step="1">
+                    <label><i class="fas fa-apple-alt"></i> Пищевые отходы (кг/нед)</label>
+                    <input type="number" id="food" value="9.10" step="0.1" min="0" class="disabled-input" readonly>
+                    <label><i class="fas fa-newspaper"></i> Бумага и картон (кг/нед)</label>
+                    <input type="number" id="paper" value="4.40" step="0.1" min="0" class="disabled-input" readonly>
+                    <label><i class="fas fa-plastic"></i> Пластик (кг/нед)</label>
+                    <input type="number" id="plastic" value="3.70" step="0.1" min="0" class="disabled-input" readonly>
+                    <label><i class="fas fa-glass-cheers"></i> Стекло + металл (кг/нед)</label>
+                    <input type="number" id="glassmetal" value="2.50" step="0.1" min="0" class="disabled-input" readonly>
+                    <label><i class="fas fa-skull-crosswalk"></i> Опасные отходы (кг/нед)</label>
+                    <input type="number" id="danger" value="0.21" step="0.01" min="0" class="disabled-input" readonly>
+                    <label><i class="fas fa-question-circle"></i> Прочее (кг/нед)</label>
+                    <input type="number" id="other" value="1.90" step="0.1" min="0" class="disabled-input" readonly>
+                    <button id="resetBtn"><i class="fas fa-sync-alt"></i> Сбросить к примеру (4 чел, 21.81 кг)</button>
+                </div>
+                <div class="results-panel">
+                    <div class="grid-stats">
+                        <div><div class="stat-number" id="totalKg">21.8</div><div>Всего кг/нед</div></div>
+                        <div><div class="stat-number" id="perPersonKg">5.45</div><div>кг на человека в неделю</div></div>
+                        <div><div class="stat-number" id="yearlyPerson">283</div><div>кг на человека в год</div></div>
+                    </div>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 0.5rem;">📊 Состав мусора (ширина = относительный вес)</div>
+                        <div id="compList"></div>
+                    </div>
+                    <div class="tip-box">
+                        <h3><i class="fas fa-lightbulb"></i> Персональный совет</h3>
+                        <p id="dynamicTip">Введите данные и количество человек</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Страница "О проекте" -->
+    <div id="about-page" class="page">
+        <div class="info-card">
+            <h3><i class="fas fa-clipboard-list"></i> Цель исследования</h3>
+            <p>Определить среднее количество мусора, которое выбрасывает семья за неделю, и на основе полученных данных предложить способы уменьшения бытовых отходов.</p>
+        </div>
+        <div class="info-card">
+            <h3><i class="fas fa-vial"></i> Методика эксперимента</h3>
+            <p>Семья из 4 человек в течение 7 дней взвешивала и сортировала все отходы по категориям: пищевые, бумага, пластик, стекло+металл, опасные, прочее.</p>
+        </div>
+        <div class="info-card">
+            <h3><i class="fas fa-chart-pie"></i> Результаты</h3>
+            <ul>
+                <li>Общий вес мусора за неделю: <strong>21,81 кг</strong> (5,45 кг на человека).</li>
+                <li>Структура: пищевые 41.7% (9,1 кг), бумага 20.2% (4,4 кг), пластик 17% (3,7 кг), стекло+металл 11.5% (2,5 кг), опасные 1% (0,21 кг), прочее 8.6% (1,9 кг).</li>
+                <li>Наибольший выброс – в пятницу и субботу (генеральная уборка).</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3><i class="fas fa-download"></i> Вывод</h3>
+            <p>Почти половину мусора составляют пищевые отходы. Даже небольшие изменения привычек (компостирование, отказ от одноразового пластика, сдача батареек) могут значительно сократить нагрузку на полигоны.</p>
+        </div>
+    </div>
+
+    <!-- Страница "Советы" -->
+    <div id="tips-page" class="page">
+        <div class="info-card">
+            <h3><i class="fas fa-seedling"></i> Как сократить мусор? Рекомендации по фракциям</h3>
+            <ul class="advice-list">
+                <li><i class="fas fa-apple-alt"></i> <strong>Пищевые отходы (9,1 кг/нед):</strong> компостируйте, планируйте меню, замораживайте остатки.</li>
+                <li><i class="fas fa-newspaper"></i> <strong>Бумага и картон (4,4 кг/нед):</strong> сдавайте макулатуру, используйте электронные чеки.</li>
+                <li><i class="fas fa-plastic"></i> <strong>Пластик (3,7 кг/нед):</strong> многоразовая бутылка и сумка, отказ от трубочек.</li>
+                <li><i class="fas fa-glass-cheers"></i> <strong>Стекло+металл (2,5 кг/нед):</strong> мойте и сдавайте – перерабатывается бесконечно.</li>
+                <li><i class="fas fa-skull-crosswalk"></i> <strong>Опасные отходы (0,21 кг/нед):</strong> батарейки, лампы – только в эко-боксы! Одна батарейка загрязняет 20 м² почвы.</li>
+                <li><i class="fas fa-question-circle"></i> <strong>Прочее (1,9 кг/нед):</strong> ремонтируйте вещи, покупайте без лишней упаковки.</li>
+            </ul>
+        </div>
+        <div class="info-card">
+            <h3><i class="fas fa-chart-line"></i> Шкала оценки (кг на человека в неделю)</h3>
+            <ul>
+                <li><strong>&lt; 3 кг</strong> – Потрясающе! Вы эко-герой.</li>
+                <li><strong>3–5 кг</strong> – Отлично, но есть куда расти.</li>
+                <li><strong>5–7 кг</strong> – Средний показатель (ваш результат). Начните сортировать.</li>
+                <li><strong>7–10 кг</strong> – Выше среднего. Пересмотрите привычки.</li>
+                <li><strong>&gt; 10 кг</strong> – Критический уровень. Меняйте образ жизни!</li>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>© 2026 Исследовательский проект «Сколько мусора мы выкидываем за неделю». Данные получены экспериментально.</p>
+    <p>♻️ Каждый килограмм, который мы не выбрасываем, — вклад в чистое будущее.</p>
+</footer>
+
+<!-- Подключаем внешний JS -->
+<script src="js/script.js"></script>
+</body>
+</html>
